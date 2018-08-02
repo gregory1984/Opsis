@@ -103,6 +103,10 @@
       <Project>{a26aba43-840a-4fe3-88bb-fd2db22cbdba}</Project>
       <Name>Opsis.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Opsis.Security\Opsis.Security.csproj">
+      <Project>{f92d1212-002b-4efb-bb31-cc1b6135e1b7}</Project>
+      <Name>Opsis.Security</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Opsis.Services\Opsis.Services.csproj">
       <Project>{84d70c00-8e77-45db-bca8-7d812c9e1646}</Project>
       <Name>Opsis.Services</Name>

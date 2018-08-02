@@ -17,7 +17,7 @@ namespace Opsis.Database.Context
 
         public OpsisContext() : base("name=Opsis")
         {
-            //  TODO: encrypt connection string inside the app.config file.
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

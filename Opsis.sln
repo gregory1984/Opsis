@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opsis.Services", "Opsis.Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opsis.Database.Tests", "Opsis.Database.Tests\Opsis.Database.Tests.csproj", "{9F608BAA-71DD-48EE-9099-5E9A51E1F47A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opsis.Security", "Opsis.Security\Opsis.Security.csproj", "{F92D1212-002B-4EFB-BB31-CC1B6135E1B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9F608BAA-71DD-48EE-9099-5E9A51E1F47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F608BAA-71DD-48EE-9099-5E9A51E1F47A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F608BAA-71DD-48EE-9099-5E9A51E1F47A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F92D1212-002B-4EFB-BB31-CC1B6135E1B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F92D1212-002B-4EFB-BB31-CC1B6135E1B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F92D1212-002B-4EFB-BB31-CC1B6135E1B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F92D1212-002B-4EFB-BB31-CC1B6135E1B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

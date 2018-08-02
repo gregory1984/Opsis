@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Opsis.Security;
 
 namespace Opsis.WPF
 {
@@ -16,6 +17,8 @@ namespace Opsis.WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            AppConfig.EncryptSectionIfPlain("connectionStrings", "Opsis.Services.dll");
 
             var bootstrapper = new Bootstrapper();
             bootstrapper.Run();
