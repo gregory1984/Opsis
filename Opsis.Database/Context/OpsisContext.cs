@@ -6,14 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Opsis.Database.Entities.Management;
+using Opsis.Database.Entities.Db;
 
 namespace Opsis.Database.Context
 {
     public class OpsisContext : DbContext
     {
         public IDbSet<User> Users { get; set; }
-        public IDbSet<Group> Groups { get; set; }
+        public IDbSet<UserRole> UserRoles { get; set; }
+        public IDbSet<UserStatus> UserStatuses { get; set; }
         public IDbSet<Permission> Permissions { get; set; }
+        public IDbSet<VersionHistory> VersionHistories { get; set; }
 
         public OpsisContext() : base("name=Opsis")
         {
@@ -22,38 +25,54 @@ namespace Opsis.Database.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            MapUserEntity(modelBuilder);
-            MapGroupEntity(modelBuilder);
-            MapPermissionEntity(modelBuilder);
+            MapUser(modelBuilder);
+            MapUserRole(modelBuilder);
+            MapPermission(modelBuilder);
+            MapVersionHistory(modelBuilder);
         }
 
-        private void MapPermissionEntity(DbModelBuilder modelBuilder)
+        private void MapPermission(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Permission>()
                 .HasKey(g => g.Id)
                 .Property(g => g.Name).HasMaxLength(200).IsRequired();
 
             modelBuilder.Entity<Permission>()
-                .HasMany(p => p.Groups)
+                .HasMany(p => p.UserRoles)
                 .WithMany(g => g.Permissions);
         }
 
-        private void MapGroupEntity(DbModelBuilder modelBuilder)
+        private void MapUserRole(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Group>()
-                .HasKey(g => g.Id)
-                .Property(g => g.Name).HasMaxLength(200).IsRequired();
+            modelBuilder.Entity<UserRole>()
+                .HasKey(r => r.Id)
+                .Property(r => r.Name).HasMaxLength(200).IsRequired();
 
-            modelBuilder.Entity<Group>()
-                .HasMany(g => g.Users)
-                .WithMany(u => u.Groups);
+            modelBuilder.Entity<UserRole>()
+                .Property(r => r.IsSystemRole).IsRequired();
 
-            modelBuilder.Entity<Group>()
-                .HasMany(g => g.Permissions)
-                .WithMany(p => p.Groups);
+            modelBuilder.Entity<UserRole>()
+                .HasMany(r => r.Users)
+                .WithMany(u => u.UserRoles);
+
+            modelBuilder.Entity<UserRole>()
+                .HasMany(r => r.Permissions)
+                .WithMany(p => p.UserRoles);
         }
 
-        private void MapUserEntity(DbModelBuilder modelBuilder)
+        private void MapUserStatus(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserStatus>()
+                .HasKey(s => s.Id)
+                .Property(s => s.Name).HasMaxLength(200).IsRequired();
+
+            modelBuilder.Entity<UserStatus>()
+                .HasMany(s => s.Users)
+                .WithRequired(u => u.UserStatus)
+                .HasForeignKey(u => u.UserStatusId);
+        }
+
+        private void MapUser(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
                 .HasKey(u => u.Id)
@@ -72,8 +91,26 @@ namespace Opsis.Database.Context
                 .Property(u => u.Surname).HasMaxLength(200).IsRequired();
 
             modelBuilder.Entity<User>()
-                .HasMany(u => u.Groups)
+                .Property(u => u.IsSystemUser).IsRequired();
+
+            modelBuilder.Entity<User>()
+                .HasRequired(u => u.UserStatus)
+                .WithMany(s => s.Users)
+                .HasForeignKey(u => u.UserStatusId);
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.UserRoles)
                 .WithMany(g => g.Users);
+        }
+
+        private void MapVersionHistory(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<VersionHistory>()
+                .HasKey(v => v.Id)
+                .Property(v => v.VersionNumber).IsRequired();
+
+            modelBuilder.Entity<VersionHistory>()
+                .Property(v => v.InitDate).IsRequired();
         }
     }
 }

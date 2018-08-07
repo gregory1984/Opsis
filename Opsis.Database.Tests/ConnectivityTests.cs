@@ -17,6 +17,7 @@ namespace Opsis.Database.Tests
             using (var db = new OpsisContext())
             {
                 Assert.AreEqual(true, db.Database.Exists());
+                var versionData = db.VersionHistories.ToList();
             }
         }
     }

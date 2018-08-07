@@ -18,7 +18,7 @@ namespace Opsis.WPF
         {
             base.OnStartup(e);
 
-            AppConfig.EncryptSectionIfPlain("connectionStrings", "Opsis.Services.dll");
+            AppConfig.EncryptSectionIfPlain("connectionStrings", "Opsis.WPF.exe");
 
             var bootstrapper = new Bootstrapper();
             bootstrapper.Run();

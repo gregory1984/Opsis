@@ -14,7 +14,11 @@ namespace Opsis.Database.Entities.Management
         public string Salt { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public bool IsSystemUser { get; set; }
 
-        public virtual ICollection<Group> Groups { get; set; }
+        public int UserStatusId { get; set; }
+
+        public virtual UserStatus UserStatus { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

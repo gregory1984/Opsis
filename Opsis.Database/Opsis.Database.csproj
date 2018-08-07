@@ -49,9 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\OpsisContext.cs" />
-    <Compile Include="Entities\Management\Group.cs" />
+    <Compile Include="Entities\Db\VersionHistory.cs" />
+    <Compile Include="Entities\Management\UserRole.cs" />
     <Compile Include="Entities\Management\Permission.cs" />
     <Compile Include="Entities\Management\User.cs" />
+    <Compile Include="Entities\Management\UserStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

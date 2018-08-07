@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Opsis.Database.Entities.Management
 {
-    public class Permission
+    public class UserStatus
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

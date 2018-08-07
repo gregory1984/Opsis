@@ -4,6 +4,8 @@ using Prism.Modularity;
 using Autofac;
 using Prism.Autofac;
 using Opsis.WPF.Views.Login;
+using Opsis.Interfaces;
+using Opsis.Services;
 
 namespace Opsis.WPF
 {
@@ -26,6 +28,8 @@ namespace Opsis.WPF
 
         protected override void ConfigureContainerBuilder(ContainerBuilder builder)
         {
+            builder.RegisterType<DatabaseService>().As<IDatabaseService>();
+            builder.RegisterType<ManagementService>().As<IManagementService>();
             base.ConfigureContainerBuilder(builder);
         }
     }

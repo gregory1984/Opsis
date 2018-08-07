@@ -1,6 +1,7 @@
 ﻿using Prism.Events;
 using Prism.Mvvm;
 using System.Collections.Generic;
+using System;
 
 namespace Opsis.WPF.ViewModels.Base
 {
