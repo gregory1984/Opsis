@@ -30,6 +30,7 @@ namespace Opsis.WPF
         {
             builder.RegisterType<DatabaseService>().As<IDatabaseService>();
             builder.RegisterType<ManagementService>().As<IManagementService>();
+            builder.RegisterType<UserService>().As<IUserService>().SingleInstance();
             base.ConfigureContainerBuilder(builder);
         }
     }
