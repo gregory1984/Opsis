@@ -1,8 +1,11 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Threading.Tasks;
+using System.Windows.Controls;
 using Prism.Events;
 using Prism.Commands;
 using Opsis.WPF.ViewModels.Base;
 using Opsis.Interfaces;
+using Opsis.WPF.Events;
 
 namespace Opsis.WPF.ViewModels.Login
 {
@@ -26,6 +29,13 @@ namespace Opsis.WPF.ViewModels.Login
             get { return username; }
             set { SetProperty(ref username, value); }
         }
+
+        private string versionNumber = "";
+        public string VersionNumber
+        {
+            get { return versionNumber; }
+            set { SetProperty(ref versionNumber, value); }
+        }
         #endregion
 
         private readonly IDatabaseService databaseService;
@@ -42,6 +52,16 @@ namespace Opsis.WPF.ViewModels.Login
         {
             SubscribeExceptionHandling();
             ExecuteSafety(databaseService.Initialize);
+            GetVersionNumber();
+        }
+
+        private async void GetVersionNumber()
+        {
+            try
+            {
+                VersionNumber = "v. " + await Task.Run(() => databaseService.GetCurrentVersionNumber());
+            }
+            catch (Exception ex) { eventAggregator.GetEvent<ExceptionOccuredEvent>().Publish(ex); }
         }
 
         private DelegateCommand<PasswordBox> login;

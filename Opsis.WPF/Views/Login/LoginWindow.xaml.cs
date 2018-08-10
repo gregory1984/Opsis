@@ -2,6 +2,7 @@
 using MahApps.Metro.Controls;
 using Opsis.WPF.ViewModels.Login;
 using Opsis.WPF.Helpers;
+using Opsis.WPF.Views.Main;
 
 namespace Opsis.WPF.Views.Login
 {
@@ -18,7 +19,11 @@ namespace Opsis.WPF.Views.Login
             vm.ExceptionOccuredEvent += (ex) => MessageBoxes.CriticalQuestion(ex.ToString());
             vm.WrongCredentialsEvent += () => MessageBoxes.Warning("Nieprawidłowa nazwa użytkownika lub hasło.");
             vm.UserBlockedEvent += () => MessageBoxes.Warning("Konto użytkownika jest zablokowane.");
-            vm.UserLoggedOnEvent += () => { };
+            vm.UserLoggedOnEvent += () =>
+            {
+                new MainWindow().Show();
+                Close();
+            };
         }
     }
 }

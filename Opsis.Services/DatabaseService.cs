@@ -35,6 +35,17 @@ namespace Opsis.Services
             }
         }
 
+        public string GetCurrentVersionNumber()
+        {
+            using (var db = new OpsisContext())
+            {
+                return db.VersionHistories
+                    .OrderByDescending(v => v.Id)
+                    .Select(v => v.VersionNumber)
+                    .SingleOrDefault();
+            }
+        }
+
         private void InsertInitialRecord(OpsisContext db)
         {
             var init = new VersionHistory
@@ -90,8 +101,8 @@ namespace Opsis.Services
                 Password = password,
                 Salt = salt,
                 IsSystemUser = true,
-                Name = "",
-                Surname = "",
+                Name = Constants.AdminName,
+                Surname = Constants.AdminSurname,
                 UserStatus = db.UserStatuses.SingleOrDefault(s => s.Id == 1),
                 UserRoles = db.UserRoles.Where(r => r.Id == 1).ToList()
             };

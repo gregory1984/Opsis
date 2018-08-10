@@ -1,0 +1,35 @@
+﻿<Controls:MetroWindow
+    x:Class="Opsis.WPF.Views.Main.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:main="clr-namespace:Opsis.WPF.Views.Main.UserControls"
+    xmlns:prism="http://prismlibrary.com/"
+    Title="Opsis"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    FontFamily="Segoe UI"
+    GlowBrush="{DynamicResource AccentColorBrush}"
+    ShowIconOnTitleBar="False"
+    WindowState="Maximized">
+    <!--
+        Main grid
+    -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--
+            Logged on user
+        -->
+        <main:LoggedOnUser Grid.Row="0" Grid.Column="0" />
+        <!--
+            Toolbar
+        -->
+        <main:MainToolBar Grid.Row="1" Grid.Column="0" />
+    </Grid>
+</Controls:MetroWindow>

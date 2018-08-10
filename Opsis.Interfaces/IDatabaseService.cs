@@ -10,5 +10,6 @@ namespace Opsis.Interfaces
     {
         void Initialize();
         bool IsEmpty();
+        string GetCurrentVersionNumber();
     }
 }

@@ -56,6 +56,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Events\Main\UserControls\MainToolBar\LogoutEvent.cs" />
+    <Compile Include="Events\Main\UserControls\MainToolBar\QuitApplicationEvent.cs" />
+    <Compile Include="ViewModels\Main\UserControls\LoggedOnUserViewModel.cs" />
+    <Compile Include="ViewModels\Main\UserControls\MainToolBarViewModel.cs" />
+    <Compile Include="ViewModels\Main\MainWindowViewModel.cs" />
+    <Compile Include="Views\Main\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main\UserControls\LoggedOnUser.xaml.cs">
+      <DependentUpon>LoggedOnUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main\UserControls\MainToolBar.xaml.cs">
+      <DependentUpon>MainToolBar.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\Login\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +87,18 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Main\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Main\UserControls\LoggedOnUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Main\UserControls\MainToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -111,6 +137,10 @@
     <PackageReference Include="Prism.Autofac" Version="6.3.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Opsis.DTO\Opsis.DTO.csproj">
+      <Project>{4760b8d7-1e1f-48f9-a8b2-fb42742913b0}</Project>
+      <Name>Opsis.DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Opsis.Interfaces\Opsis.Interfaces.csproj">
       <Project>{a26aba43-840a-4fe3-88bb-fd2db22cbdba}</Project>
       <Name>Opsis.Interfaces</Name>

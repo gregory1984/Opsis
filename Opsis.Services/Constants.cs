@@ -15,6 +15,8 @@ namespace Opsis.Services
         public static string AdminRoleName { get; } = "Administrator";
 
         public static string AdminUsername { get; } = "administrator";
+        public static string AdminName { get; } = "Administrator";
+        public static string AdminSurname { get; } = "";
         public static string AdminUserDefaultPassword { get; } = "administrator";
     }
 }

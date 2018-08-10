@@ -15,9 +15,10 @@
     WindowStartupLocation="CenterScreen">
     <GroupBox Margin="5" Header="Logowanie">
         <StackPanel>
-            <StackPanel>
+            <StackPanel FocusManager.FocusedElement="{Binding ElementName=Username}">
                 <Label VerticalAlignment="Center" Content="Nazwa użytkownika:" />
                 <TextBox
+                    Name="Username"
                     Margin="2"
                     VerticalContentAlignment="Center"
                     Controls:TextBoxHelper.ClearTextButton="True"
@@ -63,6 +64,12 @@
                     <Label Content="ZALOGUJ" FontSize="16" />
                 </StackPanel>
             </Button>
+            <TextBlock
+                Padding="0,0,5,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                FontSize="10"
+                Text="{Binding VersionNumber, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
     </GroupBox>
 </Controls:MetroWindow>
